@@ -1,30 +1,15 @@
-const express=require("express");
+const express=require('express');
 const app=express();
-app.get("/",(req,res)=>{
-    res.sendFile(__dirname+"/public/index.html");
-
-});
-
-app.get("/about",(req,res)=>{
-    res.sendFile(__dirname+"/public/about.html");
-
-});
-
-app.get("/users",(req,res)=>{
-    const users=[
-        {id:1,ime:"boris",prezime:"vujica"},
-        {id:2,ime:"tomislav",prezime:"perkovic"},
-        {id:3,ime:"josip",prezime:"ban jelacic"},
-    ];
-    res.json(users);
-
-});
-const port=3000;
-app.listen(port,(error)=>{;
-    if (error){
-        console.log("greška");
+const PORT=3000;
+app.listen(PORT,error=>{
+    if(error){
+        console.error('greska prilikom pokretanja posluzitelja: ${error.message}');
     }else{
-        console.log("server je pokrenut");
+        console.log('server je pokrenut na http://localhost:${PORT}');
     }
-    
 });
+
+app.get('/',(req,res)=>{
+    res.send('Hello,World');
+});
+
