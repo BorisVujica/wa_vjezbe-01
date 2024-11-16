@@ -10,6 +10,15 @@ app.listen(PORT,error=>{
 });
 
 app.get('/',(req,res)=>{
-    res.send('Hello,World');
+   res.sendfile(__dirname+"/public/index.html");
+    
+});
+app.get('/about',(req,res)=>{
+    res.sendfile(__dirname+"/public/about.html")
 });
 
+app.get('/users',(req,res)=>{
+    res.json([{id:1,name:"boris",surname:"vujica"},
+        {id:2,name:"filipa",surname:"bebek"},
+         {id:3,name:"robi",surname:"vujica"}])
+});
